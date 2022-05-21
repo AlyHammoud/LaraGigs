@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Listing;
 use Illuminate\Http\Request;
+use MongoDB\Driver\Session;
 
 class ListingContorller extends Controller
 {
@@ -37,7 +38,9 @@ class ListingContorller extends Controller
         ]);
 
         Listing::create($formFields);
-        return redirect('/');
+
+        //Session::flash('message', "listing Created");
+        return redirect('/')->with('message','Listing Created Successfully!');
     }
 }
 //company" => "sdf"
