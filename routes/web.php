@@ -19,5 +19,15 @@ use Illuminate\Support\Facades\Route;
 //all listings
 Route::get('/', [ListingContorller::class, 'index']);
 
+//show create Form
+Route::get('/listings/create', [ListingContorller::class, 'create'])->name('listing.create');
+
+//store listing data
+Route::post('/listings', [ListingContorller::class, 'store'])->name('listings.store');
+
+
+
+
 //single listing
 Route::get('/listings/{listing}', [ListingContorller::class, 'show']);
+

@@ -10,7 +10,7 @@ class ListingContorller extends Controller
     public function index(Request $request)
     {
         return view('listings.index',[
-            'listings' => Listing::latest()->filter(request(['tag']))->get()
+            'listings' => Listing::latest()->filter(request(['tag', 'search']))->get()
         ]);
     }
 
@@ -20,4 +20,32 @@ class ListingContorller extends Controller
             'listing' => $listing
         ]);
     }
+
+    public function create() {
+        return view('listings.create');
+    }
+
+    public function store(Request $request) {
+        $formFields = $request->validate([
+            "title" => "required",
+            "company" => "required|unique:listings",
+            "location" => "required",
+            "website" => "required",
+            "email" => "required|email",
+            "tags" => "required",
+            "description" => "required",
+        ]);
+
+        Listing::create($formFields);
+        return redirect('/');
+    }
 }
+//company" => "sdf"
+//  "title" => "sdf"
+//  "location" => "sdf"
+//  "email" => "sdf"
+//  "website" => "sdf"
+//  "tags" => "sdf"
+//  "logo" => "download.jpg"
+//  "description" => "dfsdf"
+//]
