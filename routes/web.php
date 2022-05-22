@@ -28,6 +28,15 @@ Route::post('/listings', [ListingContorller::class, 'store'])->name('listings.st
 //show edit form
 Route::get('/listings/{listing}/edit', [ListingContorller::class, 'edit'])->name('listing.edit');
 
+//Update listing
+Route::put('/listings/{listing}', [ListingContorller::class, 'update'])->name('listing.update');
+
+//Delete a listing
+Route::delete('/listings/{listing}', [ListingContorller::class, 'delete'])->name('listing.delete');
+
+//register
+Route::get('/register', [\App\Http\Controllers\UserController::class, 'create'])->name('register.create');
+
 
 
 
