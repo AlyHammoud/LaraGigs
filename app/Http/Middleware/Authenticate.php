@@ -17,5 +17,10 @@ class Authenticate extends Middleware
         if (! $request->expectsJson()) {
             return route('login');
         }
+
+        //make sure to have a route has a name login to redirect to if not authenticated
+//        if (! $request->expectsJson()) {
+//            return route('login');
+//        }
     }
 }

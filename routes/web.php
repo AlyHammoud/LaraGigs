@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [ListingContorller::class, 'index']);
 
 //show create Form
-Route::get('/listings/create', [ListingContorller::class, 'create'])->name('listing.create');
+Route::get('/listings/create', [ListingContorller::class, 'create'])->name('listing.create')->middleware('auth');
 
 //store listing data
 Route::post('/listings', [ListingContorller::class, 'store'])->name('listings.store');
@@ -42,6 +42,12 @@ Route::post('/users', [\App\Http\Controllers\UserController::class, 'store']);
 
 //log user out
 Route::post('/logout', [\App\Http\Controllers\UserController::class, 'logout']);
+
+//show login form
+Route::get('/login', [\App\Http\Controllers\UserController::class, 'login'])->name('login');
+
+//login
+Route::post('/users/authenticate', [\App\Http\Controllers\UserController::class, 'authenticate']);
 
 
 
