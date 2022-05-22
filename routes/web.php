@@ -25,6 +25,9 @@ Route::get('/listings/create', [ListingContorller::class, 'create'])->name('list
 //store listing data
 Route::post('/listings', [ListingContorller::class, 'store'])->name('listings.store');
 
+//show edit form
+Route::get('/listings/{listing}/edit', [ListingContorller::class, 'edit'])->name('listing.edit');
+
 
 
 

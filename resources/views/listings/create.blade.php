@@ -7,7 +7,7 @@
             <p class="mb-4">Post a gig to find a developer</p>
         </header>
 
-        <form action="{{route('listings.store')}}" method="POST">
+        <form action="{{route('listings.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-6">
                 <label
@@ -110,11 +110,15 @@
                 <label for="logo" class="inline-block text-lg mb-2">
                     Company Logo
                 </label>
-{{--                <input--}}
-{{--                    type="file"--}}
-{{--                    class="border border-gray-200 rounded p-2 w-full"--}}
-{{--                    name="logo" value="{{old('logo')}}"--}}
-{{--                />--}}
+                <input
+                    type="file"
+                    class="border border-gray-200 rounded p-2 w-full"
+                    name="logo" value="{{old('logo')}}"
+                />
+
+                @error('logo')
+                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                @enderror
             </div>
 
             <div class="mb-6">

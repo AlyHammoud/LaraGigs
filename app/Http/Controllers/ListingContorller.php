@@ -42,12 +42,24 @@ class ListingContorller extends Controller
             "email" => "required|email",
             "tags" => "required",
             "description" => "required",
+            "logo" => "required"
         ]);
+
+        if($request->hasFile('logo')){                              // new folder logos
+            $formFields['logo'] = $request->file('logo')->store('logos', 'public');
+        }
 
         Listing::create($formFields);
 
         //Session::flash('message', "listing Created");
         return redirect('/')->with('message','Listing Created Successfully!');
+    }
+
+    public function edit(Listing $listing)
+    {
+        return view('listings.edit',[
+            'listing' => $listing
+        ]);
     }
 }
 //company" => "sdf"
