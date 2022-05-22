@@ -37,6 +37,12 @@ Route::delete('/listings/{listing}', [ListingContorller::class, 'delete'])->name
 //register
 Route::get('/register', [\App\Http\Controllers\UserController::class, 'create'])->name('register.create');
 
+//create new user
+Route::post('/users', [\App\Http\Controllers\UserController::class, 'store']);
+
+//log user out
+Route::post('/logout', [\App\Http\Controllers\UserController::class, 'logout']);
+
 
 
 
