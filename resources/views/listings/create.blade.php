@@ -18,7 +18,7 @@
                 <input
                     type="text"
                     class="border border-gray-200 rounded p-2 w-full"
-                    name="company"
+                    name="company" value="{{old('company')}}"
                 />
                 @error('company')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
@@ -32,7 +32,7 @@
                 <input
                     type="text"
                     class="border border-gray-200 rounded p-2 w-full"
-                    name="title"
+                    name="title" value="{{old('title')}}"
                     placeholder="Example: Senior Laravel Developer"
                 />
 
@@ -50,7 +50,7 @@
                 <input
                     type="text"
                     class="border border-gray-200 rounded p-2 w-full"
-                    name="location"
+                    name="location" value="{{old('location')}}"
                     placeholder="Example: Remote, Boston MA, etc"
                 />
                 @error('location')
@@ -65,7 +65,7 @@
                 <input
                     type="text"
                     class="border border-gray-200 rounded p-2 w-full"
-                    name="email"
+                    name="email" value="{{old('email')}}"
                 />
 
                 @error('email')
@@ -83,7 +83,7 @@
                 <input
                     type="text"
                     class="border border-gray-200 rounded p-2 w-full"
-                    name="website"
+                    name="website" value="{{old('website')}}"
                 />
                 @error('website')
                     <p class="text-red-500 text-xs mt-1">{{$message}}</p>
@@ -97,7 +97,7 @@
                 <input
                     type="text"
                     class="border border-gray-200 rounded p-2 w-full"
-                    name="tags"
+                    name="tags" value="{{old('tags')}}"
                     placeholder="Example: Laravel, Backend, Postgres, etc"
                 />
 
@@ -113,7 +113,7 @@
 {{--                <input--}}
 {{--                    type="file"--}}
 {{--                    class="border border-gray-200 rounded p-2 w-full"--}}
-{{--                    name="logo"--}}
+{{--                    name="logo" value="{{old('logo')}}"--}}
 {{--                />--}}
             </div>
 
@@ -126,7 +126,7 @@
                 </label>
                 <textarea
                     class="border border-gray-200 rounded p-2 w-full"
-                    name="description"
+                    name="description" value="{{old('description')}}"
                     rows="10"
                     placeholder="Include tasks, requirements, salary, etc"
                 ></textarea>
