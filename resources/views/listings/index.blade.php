@@ -13,6 +13,9 @@
     </div>
 
     <div class="mt-6 p-4">
+{{--   aritsan vendor:publish // then choose the pagination number, this will create vendor folder in views
+  then in appseriveprovider in boot() method add : Paginator::useBootstapFive
+  --}}
         {{$listings->links()}}
     </div>
 </x-layout>

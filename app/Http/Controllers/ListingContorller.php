@@ -10,13 +10,13 @@ class ListingContorller extends Controller
 {
     public function index(Request $request)
     {
-//        return view('listings.index',[
-//            'listings' => Listing::latest()->filter(request(['tag', 'search']))->paginate(5)
-//        ]);
-
         return view('listings.index',[
-            'listings' => Listing::latest()->filter(request(['tag', 'search']))->simplePaginate(5)
+            'listings' => Listing::latest()->filter(request(['tag', 'search']))->paginate(5)
         ]);
+
+//        return view('listings.index',[
+//            'listings' => Listing::latest()->filter(request(['tag', 'search']))->simplePaginate(5)
+//        ]);
 //        return view('listings.index',[
 //            'listings' => Listing::latest()->filter([$request->query('tag')])->paginate(5)
 //        ]);
