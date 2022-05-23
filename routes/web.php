@@ -23,28 +23,31 @@ Route::get('/', [ListingContorller::class, 'index']);
 Route::get('/listings/create', [ListingContorller::class, 'create'])->name('listing.create')->middleware('auth');
 
 //store listing data
-Route::post('/listings', [ListingContorller::class, 'store'])->name('listings.store');
+Route::post('/listings', [ListingContorller::class, 'store'])->name('listings.store')->middleware('auth');
 
 //show edit form
-Route::get('/listings/{listing}/edit', [ListingContorller::class, 'edit'])->name('listing.edit');
+Route::get('/listings/{listing}/edit', [ListingContorller::class, 'edit'])->name('listing.edit')->middleware('auth');
 
 //Update listing
-Route::put('/listings/{listing}', [ListingContorller::class, 'update'])->name('listing.update');
+Route::put('/listings/{listing}', [ListingContorller::class, 'update'])->name('listing.update')->middleware('auth');
 
 //Delete a listing
-Route::delete('/listings/{listing}', [ListingContorller::class, 'delete'])->name('listing.delete');
+Route::delete('/listings/{listing}', [ListingContorller::class, 'delete'])->name('listing.delete')->middleware('auth');
 
 //register
-Route::get('/register', [\App\Http\Controllers\UserController::class, 'create'])->name('register.create');
+Route::get('/register', [\App\Http\Controllers\UserController::class, 'create'])->name('register.create')->middleware('guest');
 
 //create new user
 Route::post('/users', [\App\Http\Controllers\UserController::class, 'store']);
 
 //log user out
-Route::post('/logout', [\App\Http\Controllers\UserController::class, 'logout']);
+Route::post('/logout', [\App\Http\Controllers\UserController::class, 'logout'])->middleware('auth');
 
 //show login form
-Route::get('/login', [\App\Http\Controllers\UserController::class, 'login'])->name('login');
+Route::get('/login', [\App\Http\Controllers\UserController::class, 'login'])->name('login')->middleware('guest');
+
+//manage Listings
+Route::get('/listings/manage', [ListingContorller::class, 'manage'])->middleware('auth');
 
 //login
 Route::post('/users/authenticate', [\App\Http\Controllers\UserController::class, 'authenticate']);

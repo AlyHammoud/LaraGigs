@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Listing;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -19,9 +20,15 @@ class DatabaseSeeder extends Seeder
         // check factoroy folder for user factory
         //sail artisan migrate:refresh --seed // this will empty all records in db then run seed
 
-        Listing::factory(6)->create();
+        //Listing::factory(6)->create();
+        $user = User::factory()->create([
+            "name" => "John Doe",
+            "email" => "john@gmail.com"
+        ]);
 
-        \App\Models\User::factory(5)->create();
+        \App\Models\Listing::factory(5)->create([
+            'user_id' => $user->id
+        ]);
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
